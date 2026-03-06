@@ -1,0 +1,19 @@
+DiscountRule 	折扣設定
+MSales		銷貨主檔
+TSales		銷貨明細檔
+OrderProductM	採購主檔
+OrderProuductT	採購明細檔
+Company		公司基本資料
+OtherCost	其他支出收入
+OtherConfigs	系統設定檔
+MisInvoice	發票作廢
+PDList		進貨檔
+Stockhouse	倉庫貨架檔
+Products	商品檔
+Transcations
+PtLocation	商品倉庫貨架位置
+Support		供應商檔
+GpProductM	組合商品主檔
+GpProuductT	組合商品明細檔
+UsLogin		使用者登入檔
+PtMoveList	商品庫存位移

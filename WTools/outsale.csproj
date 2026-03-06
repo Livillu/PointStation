@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAD270C5-4059-42F2-80A1-77A2B57184DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WTools</RootNamespace>
+    <AssemblyName>WTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>C:\Users\alice\source\repos\OutSaleWin\build\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A53889268D1049D9F76BF3A36D9A77B5E12E2873</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WTools_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=8.2.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.8.2.0\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=8.1.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.8.1.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\HarfBuzzSharp.8.3.1.1\lib\net462\HarfBuzzSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.7.0.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.7.0\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="QREncrypter">
+      <HintPath>C:\Users\nice\Downloads\電子發票QRCode說明文件\加解密工具\dll\MS.Net\QREncrypter.dll</HintPath>
+    </Reference>
+    <Reference Include="ScottPlot, Version=5.1.57.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScottPlot.5.1.57\lib\net462\ScottPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="SDK.NET.Interface">
+      <HintPath>..\..\WindowsFormsApp1\SDK.NET.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.3.119.0\lib\net462\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.HarfBuzz, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.HarfBuzz.3.119.0\lib\net462\SkiaSharp.HarfBuzz.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=10.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.1\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Xml, Version=8.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.8.0.2\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuyOrder\UserOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BuyOrder\UserOrder.Designer.cs">
+      <DependentUpon>UserOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuyOrder\UseSupportInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BuyOrder\UseSupportInfo.Designer.cs">
+      <DependentUpon>UseSupportInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogExcelImportPt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogExcelImportPt.Designer.cs">
+      <DependentUpon>dialogExcelImportPt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogform.Designer.cs">
+      <DependentUpon>dialogform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogLogin.Designer.cs">
+      <DependentUpon>dialogLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogLogin1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogLogin1.Designer.cs">
+      <DependentUpon>dialogLogin1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialogtext.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogtext.Designer.cs">
+      <DependentUpon>dialogtext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAdepterTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAdepterTest.Designer.cs">
+      <DependentUpon>FAdepterTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FOverAcount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FOverAcount.Designer.cs">
+      <DependentUpon>FOverAcount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="invoice.Designer.cs">
+      <DependentUpon>invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InvoicePrint.Designer.cs">
+      <DependentUpon>InvoicePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailTools.cs" />
+    <Compile Include="MigPrint\MIG4.cs" />
+    <Compile Include="MigPrint\MigCommon.cs" />
+    <Compile Include="MigPrint\MigXml.cs" />
+    <Compile Include="PostDesk\FShowLost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostDesk\FShowLost.Designer.cs">
+      <DependentUpon>FShowLost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostDesk\UserClientDesk.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PostDesk\UserClientDesk.Designer.cs">
+      <DependentUpon>UserClientDesk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleOrder\InvoicePrint.cs" />
+    <Compile Include="SaleOrder\UserNetSale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\UserNetSale.Designer.cs">
+      <DependentUpon>UserNetSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserAssember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserAssember.Designer.cs">
+      <DependentUpon>UserAssember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCompant.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCompant.Designer.cs">
+      <DependentUpon>UserCompant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl3.Designer.cs">
+      <DependentUpon>UserControl3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl5.Designer.cs">
+      <DependentUpon>UserControl5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserDiscount.Designer.cs">
+      <DependentUpon>UserDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInvConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserInvConfig.Designer.cs">
+      <DependentUpon>UserInvConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOtherConfigs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOtherConfigs.Designer.cs">
+      <DependentUpon>UserOtherConfigs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOtherIO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOtherIO.Designer.cs">
+      <DependentUpon>UserOtherIO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSqlAdapter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserSqlAdapter.Designer.cs">
+      <DependentUpon>UserSqlAdapter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserStockLocal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserStockLocal.Designer.cs">
+      <DependentUpon>UserStockLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\FCheckProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="warehouse\FCheckProduct.Designer.cs">
+      <DependentUpon>FCheckProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserAdjust.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserAdjust.Designer.cs">
+      <DependentUpon>UserAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserGetStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserGetStock.Designer.cs">
+      <DependentUpon>UserGetStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserOrderList.Designer.cs">
+      <DependentUpon>UserOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserProductClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserProductClass.Designer.cs">
+      <DependentUpon>UserProductClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserProductCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserProductCreate.Designer.cs">
+      <DependentUpon>UserProductCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserPtCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserPtCheck.Designer.cs">
+      <DependentUpon>UserPtCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserSearchstock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserSearchstock.Designer.cs">
+      <DependentUpon>UserSearchstock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\WarehouseTools.cs" />
+    <EmbeddedResource Include="BuyOrder\UserOrder.resx">
+      <DependentUpon>UserOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyOrder\UseSupportInfo.resx">
+      <DependentUpon>UseSupportInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogExcelImportPt.resx">
+      <DependentUpon>dialogExcelImportPt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogform.resx">
+      <DependentUpon>dialogform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogLogin.resx">
+      <DependentUpon>dialogLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogLogin1.resx">
+      <DependentUpon>dialogLogin1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogtext.resx">
+      <DependentUpon>dialogtext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FOverAcount.resx">
+      <DependentUpon>FOverAcount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="invoice.resx">
+      <DependentUpon>invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoicePrint.resx">
+      <DependentUpon>InvoicePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostDesk\FShowLost.resx">
+      <DependentUpon>FShowLost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostDesk\UserClientDesk.resx">
+      <DependentUpon>UserClientDesk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SaleOrder\UserNetSale.resx">
+      <DependentUpon>UserNetSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAssember.resx">
+      <DependentUpon>UserAssember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCompant.resx">
+      <DependentUpon>UserCompant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl3.resx">
+      <DependentUpon>UserControl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl5.resx">
+      <DependentUpon>UserControl5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDiscount.resx">
+      <DependentUpon>UserDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInvConfig.resx">
+      <DependentUpon>UserInvConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOtherConfigs.resx">
+      <DependentUpon>UserOtherConfigs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOtherIO.resx">
+      <DependentUpon>UserOtherIO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSqlAdapter.resx">
+      <DependentUpon>UserSqlAdapter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserStockLocal.resx">
+      <DependentUpon>UserStockLocal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\FCheckProduct.resx">
+      <DependentUpon>FCheckProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserAdjust.resx">
+      <DependentUpon>UserAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserGetStock.resx">
+      <DependentUpon>UserGetStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserOrderList.resx">
+      <DependentUpon>UserOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserProductClass.resx">
+      <DependentUpon>UserProductClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserProductCreate.resx">
+      <DependentUpon>UserProductCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserPtCheck.resx">
+      <DependentUpon>UserPtCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserSearchstock.resx">
+      <DependentUpon>UserSearchstock.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\UserControl2.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="WTools_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+    <None Include="Resources\excel.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\add.png" />
+    <None Include="Resources\billing.png" />
+    <Content Include="Resources\cross.png" />
+    <None Include="Resources\tab-close-right.png" />
+    <None Include="Resources\page-excel1.png" />
+    <None Include="Resources\cross1.png" />
+    <None Include="Resources\money-dollar.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\finished-work.png" />
+    <None Include="Resources\Login.jpg" />
+    <Content Include="Resources\page-excel.png" />
+    <None Include="Resources\magnifier.png" />
+    <None Include="Resources\database-remove.png" />
+    <None Include="Resources\database-add.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\private.png" />
+    <None Include="Resources\note-pinned.png" />
+    <None Include="Resources\news-add.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\glyph-remove.png" />
+    <None Include="Resources\glyph-check.png" />
+    <None Include="Resources\glyph-add.png" />
+    <None Include="Resources\document-remove.png" />
+    <None Include="Resources\document-edit.png" />
+    <None Include="Resources\document-checklist.png" />
+    <None Include="Resources\document-blueprint.png" />
+    <None Include="Resources\document-add.png" />
+    <None Include="Resources\document.png" />
+    <None Include="Resources\credit-card-paypal.png" />
+    <None Include="Resources\contacts-sync.png" />
+    <None Include="Resources\contacts-add.png" />
+    <None Include="Resources\contacts.png" />
+    <None Include="Resources\contact.png" />
+    <None Include="Resources\comment-remove.png" />
+    <None Include="Resources\comment-edit.png" />
+    <None Include="Resources\comment-add.png" />
+    <None Include="Resources\cog.png" />
+    <None Include="Resources\button-white-stop.png" />
+    <None Include="Resources\button-white-remove.png" />
+    <None Include="Resources\button-white-load.png" />
+    <None Include="Resources\button-white-check.png" />
+    <None Include="Resources\button-white-add.png" />
+    <None Include="Resources\button-stop.png" />
+    <None Include="Resources\button-remove.png" />
+    <None Include="Resources\button-load.png" />
+    <None Include="Resources\button-check.png" />
+    <None Include="Resources\button-add.png" />
+    <None Include="Resources\bookmarks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Account\" />
+    <Folder Include="BasesSet\" />
+    <Folder Include="Support\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Linux.NoDependencies.3.119.0\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
+    <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+  <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
+  <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+</Project>
