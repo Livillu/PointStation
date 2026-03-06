@@ -78,13 +78,18 @@ namespace WTools
             SqlCommand cmd1 = new SqlCommand(sql, conn1);
             cmd1.Connection.Open();
             SqlDataReader sdr = cmd1.ExecuteReader();
-            if(sdr.Read()){
-                QutyNoError = Convert.ToBoolean(Convert.ToUInt16(sdr["F03"])); //檢查庫存量警示
-                CheckAccounts = Convert.ToBoolean(Convert.ToUInt16(sdr["F04"])); //折扣檢查
-                CheckMig = Convert.ToBoolean(Convert.ToUInt16(sdr["F05"]));//電子發票
+            try
+            {
+                if (sdr.Read())
+                {
+                    QutyNoError = Convert.ToBoolean(Convert.ToUInt16(sdr["F03"])); //檢查庫存量警示
+                    CheckAccounts = Convert.ToBoolean(Convert.ToUInt16(sdr["F04"])); //折扣檢查
+                    CheckMig = Convert.ToBoolean(Convert.ToUInt16(sdr["F05"]));//電子發票
+                }
             }
+            catch { }
             //庫存位置
-            proLocal.master = new List<ProLocalM>();
+            /*proLocal.master = new List<ProLocalM>();
             cmd1 = new SqlCommand("SELECT [sno],[Upitem],[Name] FROM [Stockhouse] where Upitem=0;", conn1);
             sdr.Close();
             sdr = cmd1.ExecuteReader();
@@ -108,7 +113,7 @@ namespace WTools
                 pm.id = Convert.ToInt32(sdr["sno"]);
                 pm.name = sdr["Name"].ToString();
                 proLocal.detail.Add(pm);
-            }
+            }*/
             //公司基本資料
             cmd1 = new SqlCommand("SELECT TOP (1) [SupName],[SupSno],(SELECT TOP (1) [F1] FROM [OtherConfigs] where [FSno]=1) PrintName FROM [Company]", conn1);
             sdr.Close();

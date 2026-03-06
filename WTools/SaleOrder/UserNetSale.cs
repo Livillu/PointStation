@@ -167,6 +167,7 @@ namespace WTools.SaleOrder
             SqlCommand cmd = new SqlCommand($"SELECT count(*) FROM [{COMPANY}].[dbo].[INVMB] where [MB001]='{pt_id}'", conn);
             cmd.Connection.Open();
             int i= Convert.ToInt16(cmd.ExecuteScalar());
+            cmd.Connection.Close();
             return i;
         }
         //檢查發票重覆存在
@@ -176,6 +177,7 @@ namespace WTools.SaleOrder
             SqlCommand cmd = new SqlCommand($"SELECT count(*) FROM [{COMPANY}].[dbo].[COPTG] where TG014='{order_id}'", conn);
             cmd.Connection.Open();
             int i = Convert.ToInt16(cmd.ExecuteScalar());
+            cmd.Connection.Close();
             return i;
         }
         //交易產生ERP銷貨單
@@ -446,7 +448,7 @@ namespace WTools.SaleOrder
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
-            SqlCommand cmd = new SqlCommand($"SELECT a.[Sno] [od_id],[MB001] [pt_id],[PtName] [pt_name],[PtUnit] [unit],[Quty] [pt_quty],[Tprice][pt_price],[Cdate] [od_date],b.[Price] [pt_total_price] FROM [TSales] a inner join [OutPos].[dbo].[MSales] b on a.Sno=b.Sno where [Cdate] between '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}' and '{dateTimePicker2.Value.ToString("yyyy-MM-dd")}' order by a.[Sno]", conn);
+            SqlCommand cmd = new SqlCommand($"SELECT a.[Sno] [od_id],a.[MB001] [pt_id],c.[MB002] [pt_name],c.[MB003] [unit],[Quty] [pt_quty],[Tprice][pt_price],[Cdate] [od_date],b.[Price] [pt_total_price] FROM [TSales] a inner join [OutPos].[dbo].[MSales] b on a.Sno=b.Sno left join Products c on a.MB001=c.MB001 where [Cdate] between '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}' and '{dateTimePicker2.Value.ToString("yyyy-MM-dd")}' order by a.[Sno]", conn);
             cmd.Connection.Open();
             SqlDataReader sdrs = cmd.ExecuteReader();
             dt = new DataTable();
@@ -462,12 +464,28 @@ namespace WTools.SaleOrder
         private void button2_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            string Company = "TEST";
+            switch (comboBox2.Text)
+            {
+                //聯輝 永順 璿智 TEST
+                case "聯輝":
+                    Company = "LH01";
+                    break;
+                case "永順":
+                    Company = "YS";
+                    break;
+                case "璿智":
+                    Company = "WP01";
+                    break;
+                case "":
+                    break;
+            }
             if (dt == null || dt.Rows.Count == 0) return;
             List<string> errmsg1 = new List<string>();
             foreach (DataRow sdr in dt.Rows)
             {
-                if (CheckProductExnd(sdr["pt_id"].ToString(), comboBox2.Text) == 0) listBox1.Items.Add(sdr["pt_id"].ToString() + "品號不存在");
-                if (CheckInvoicExnd(sdr["od_id"].ToString(), comboBox2.Text)>0) listBox1.Items.Add(sdr["od_id"].ToString() + "重複匯入");
+                if (CheckProductExnd(sdr["pt_id"].ToString(), Company) == 0) listBox1.Items.Add(sdr["pt_id"].ToString() + "品號不存在");
+                if (CheckInvoicExnd(sdr["od_id"].ToString(), Company) >0) listBox1.Items.Add(sdr["od_id"].ToString() + "重複匯入");
             }
             if (listBox1.Items.Count==0)
             {
