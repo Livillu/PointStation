@@ -12,7 +12,7 @@ using WTools.MigPrint;
 using WTools.SaleOrder;
 using WTools.warehouse;
 using static QRCoder.PayloadGenerator.SwissQrCode;
-using static WTools.MigPrint.MIG4.F0401;
+using static WTools.MigPrint.MIG4.F0501;
 using static WTools.SaleOrder.InvoicePrint;
 
 namespace WTools.PostDesk
@@ -301,7 +301,7 @@ namespace WTools.PostDesk
                     }
                     if (isok)
                     {
-                        //列印發票
+                        //列印發票資料
                         if (MainForm.CheckMig)
                         {
                             //列印發票
@@ -332,7 +332,7 @@ namespace WTools.PostDesk
                             result.data.Details = details;
                             result.data.Amount = amount;
                             result.data.Main=tmpmain;
-                            MigXml.F0401ToXmls(result.data);
+                            MigXml.F0501ToXmls(result.data);
                             
                         }
                         //清檔
@@ -703,14 +703,20 @@ namespace WTools.PostDesk
         {
             TmpButtonConfig(2);
         }
-        /*
-         * 電子發票上傳
-        private void button24_Click(object sender, EventArgs e)
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            MigXml.F0401XML("MT43487100");
-            MigXml.F0501ToXmls("MT43487100","TEST...");
+            if (radioButton2.Checked) numericUpDown1.Text = textBox7.Text;
         }
-        */
+
+        /*
+* 電子發票上傳
+private void button24_Click(object sender, EventArgs e)
+{
+   MigXml.F0401XML("MT43487100");
+   MigXml.F0501ToXmls("MT43487100","TEST...");
+}
+*/
         //發票列印
         private void InvoicePrint2(string InviceNo)
         {
@@ -784,6 +790,7 @@ namespace WTools.PostDesk
             invoice.MastQrcode.CopanyName = MainForm.CpInfo[0];
             invoice.MastQrcode.SellerIdentifier = MainForm.CpInfo[1];
             invoice.MastQrcode.BusinessIdentifier=MainForm.CpInfo[1];
+            invoice.MastQrcode.BuyerIdentifier = "0000000000";
             invoice.MastQrcode.InvoiceNumber = textBox1.Text.Trim();
             invoice.MastQrcode.InvoiceDate = Y.ToString()+DateTime.Today.ToString("MMdd");
             invoice.MastQrcode.InvoiceTime = DateTime.Now.ToString("HH:mm:ss");

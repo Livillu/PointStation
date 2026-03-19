@@ -18,7 +18,7 @@ namespace WTools
         }
         public InvoiceData MastQrcode;//發票明檔
         
-        const string KeyIV = "Dt8lyToo17X/XkXaQvihuA==";
+        const string KeyIV = "Dt8lyToo17X/XkXaQvihuA==";//Base64 加密
         const string AESKey = "2B2DD98C7A1766930E6962E77014C171";/// <param name="AESKey">種子密碼(QRcode)</param>
 
         #region 產品資訊
@@ -249,7 +249,7 @@ namespace WTools
             {
                 throw new Exception("Invaild TotalAmount: " + TotalAmount);
             }
-            if (string.IsNullOrEmpty(BuyerIdentifier) || (BuyerIdentifier.Length != 8))
+            if (string.IsNullOrEmpty(BuyerIdentifier) || (BuyerIdentifier.Length != 8 && BuyerIdentifier.Length !=10))
             {
                 throw new Exception("Invaild BuyerIdentifier: " + BuyerIdentifier);
             }
@@ -360,13 +360,14 @@ namespace WTools
             /*//檢查是否有沒設定的參數，並適時的調整為空字串
             if (string.IsNullOrWhiteSpace(cSystemName)) { cSystemName = ""; }
             */
-            /**** 列印資料 ****/
+           
 
             /**** 準備列印 ****/
             System.Drawing.Printing.PrintDocument oDocument = new System.Drawing.Printing.PrintDocument();
             oDocument.DefaultPageSettings.PrinterSettings.PrinterName = MastQrcode.PrintName;
             oDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("3InchPaper", 290, int.MaxValue);
             oDocument.PrintPage += setDocumentContent;  //delegate給setDocumentContent
+            /**** 列印資料 ****/
             oDocument.Print();
         }
         #endregion
@@ -459,10 +460,10 @@ namespace WTools
                 graphics.DrawImage(oTemp, new Rectangle(0, 0, 160, 160));
                 e.Graphics.DrawImage(oTemp2, new PointF(fPrintX_Item, fPrintY));
 
-                if (MastQrcode.QRCode2.Count > 1)
+                if (MastQrcode.QRCode2.Count > 0)
                 {
                     string items = "**";
-                    for (int i = 1; i < MastQrcode.QRCode2.Count; i++)
+                    for (int i = 0; i < MastQrcode.QRCode2.Count; i++)
                     {
                         items += $"{MastQrcode.QRCode2[i].Name}:{MastQrcode.QRCode2[i].Qutys.ToString()}:{MastQrcode.QRCode2[i].Price.ToString()}:";
                     }

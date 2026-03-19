@@ -25,7 +25,7 @@ namespace WTools.MigPrint
 {
     public class MIG4
     {
-        public class F0401
+        public class F0501
         {
             public class MsgResult
                 {
@@ -35,7 +35,7 @@ namespace WTools.MigPrint
             public class Invoice
             {
                 [XmlAttribute("schemaLocation", Namespace = XmlSchema.InstanceNamespace)]
-                public string xsiSchemaLocation = "urn:GEINV:eInvoiceMessage:F0401:4.1 F0401.xsd";
+                public string xsiSchemaLocation = "urn:GEINV:eInvoiceMessage:F0501:4.1 F0501.xsd";
                 public Main Main { set; get; }
                 public List<ProductItem> Details { set; get; }
                 public Amount Amount { set; get; }
@@ -264,7 +264,7 @@ namespace WTools.MigPrint
                 return errmsg;
             }
         }
-        public class F0501
+        public class F0502
         {          
                 public class MsgResult
                 {
@@ -274,7 +274,7 @@ namespace WTools.MigPrint
                 public class CancelInvoice
                 {
                     [XmlAttribute("schemaLocation", Namespace = XmlSchema.InstanceNamespace)]
-                    public string xsiSchemaLocation = "urn:GEINV:eInvoiceMessage:F0501:4.1 F0501.xsd";
+                    public string xsiSchemaLocation = "urn:GEINV:eInvoiceMessage:F0502:4.1 F0502.xsd";
                     public InvoiceNumberType CancelInvoiceNumber { get; set; }// common. `xml:"CancelInvoiceNumber"`
                     public DateType InvoiceDate { get; set; }// common.          `xml:"InvoiceDate"`
 

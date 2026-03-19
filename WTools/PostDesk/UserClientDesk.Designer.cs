@@ -148,6 +148,7 @@
             this.radioButton2.TabIndex = 65;
             this.radioButton2.Text = "Line Pay";
             this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
